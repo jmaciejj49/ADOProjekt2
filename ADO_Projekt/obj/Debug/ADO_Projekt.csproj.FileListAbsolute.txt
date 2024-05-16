@@ -1,0 +1,15 @@
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\bin\Debug\ADO_Projekt.exe.config
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\bin\Debug\ADO_Projekt.exe
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\bin\Debug\ADO_Projekt.pdb
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.csproj.AssemblyReference.cache
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.FormMain.resources
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.Properties.Resources.resources
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.csproj.GenerateResource.cache
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.csproj.CoreCompileInputs.cache
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.exe
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.pdb
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.FormFlights.resources
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Projekt.DatePanel.resources
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\bin\Debug\Newtonsoft.Json.dll
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\bin\Debug\Newtonsoft.Json.xml
+C:\Users\puddi\source\repos\ADO_Projekt\ADO_Projekt\obj\Debug\ADO_Proj.7467A060.Up2Date
