@@ -15,7 +15,7 @@ namespace ADO_Projekt
     {
         private BindingSource bindingSource = new BindingSource();
         private DbService dbService = new DbService();
-        private string query = "SELECT Airplane_ID, Departure, Arrival, Status_ID FROM Flights;";
+        private string query = "SELECT ID, Airplane_ID, Departure, Arrival, Status_ID FROM Flights;";
         private string table = "Flights";
         private DataGridViewCell clickedCell;
 
@@ -33,7 +33,8 @@ namespace ADO_Projekt
         private void LoadFlights()
         {
             DataSet flightsDataSet = dbService.LoadData(query, table);
-            bindingSource.DataSource = flightsDataSet.Tables[table];
+            bindingSource.DataSource = flightsDataSet;
+            bindingSource.DataMember = table;
 
             dataGridViewFlightPlanning.DataSource = bindingSource;
             bindingNavigatorFlightPlanning.BindingSource = bindingSource;
@@ -124,5 +125,28 @@ namespace ADO_Projekt
                 clickedCell.Value = e.SelectedDateTime;
             }
         }
+
+        private void bindingNavigatorSave_Click(object sender, EventArgs e)
+        {
+            bindingSource.EndEdit(); // Zatwierdź wszystkie bieżące edycje
+            DataSet flightsDataSet = (DataSet)bindingSource.DataSource;
+            if (flightsDataSet.HasChanges())
+            {
+                try
+                {
+                    dbService.UpdateData(flightsDataSet, query, table);
+                    MessageBox.Show("Zmiany zostały zapisane.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas zapisywania zmian: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Brak zmian do zapisania.");
+            }
+        }
+
     }
 }
