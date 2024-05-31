@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ADO_Projekt
 {
@@ -15,9 +16,11 @@ namespace ADO_Projekt
     {
         private BindingSource bindingSource = new BindingSource();
         private DbService dbService = new DbService();
-        private string query = "SELECT Airplane_ID, Departure, Arrival, Status_ID FROM Flights;";
-        private string table = "Flights";
+        private string query = "SELECT * FROM flights";
+        private string table = "flights";
         private DataGridViewCell clickedCell;
+        private DataSet flightsDataSet;
+        private readonly Helper helper = new Helper();
 
         public FormFlights()
         {
@@ -32,7 +35,7 @@ namespace ADO_Projekt
 
         private void LoadFlights()
         {
-            DataSet flightsDataSet = dbService.LoadData(query, table);
+            flightsDataSet = dbService.LoadData(query, table);
             bindingSource.DataSource = flightsDataSet.Tables[table];
 
             dataGridViewFlightPlanning.DataSource = bindingSource;
@@ -44,25 +47,6 @@ namespace ADO_Projekt
             dataGridViewFlightPlanning.AutoGenerateColumns = false;
             dataGridViewFlightPlanning.Columns.Clear(); 
             dataGridViewFlightPlanning.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-
-            //Panel Arrival
-            DataGridViewTextBoxColumn arrivalColumn = new DataGridViewTextBoxColumn();
-            arrivalColumn.Name = "Arrival";
-            arrivalColumn.HeaderText = "Przylot";
-            arrivalColumn.DataPropertyName = "Arrival";
-            arrivalColumn.DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
-            arrivalColumn.ReadOnly = true;
-            dataGridViewFlightPlanning.Columns.Add(arrivalColumn);
-
-            //Panel Departure
-            DataGridViewTextBoxColumn departureColumn = new DataGridViewTextBoxColumn();
-            departureColumn.Name = "Departure";
-            departureColumn.HeaderText = "Odlot";
-            departureColumn.DataPropertyName = "Departure";
-            departureColumn.DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
-            departureColumn.ReadOnly = true;
-            dataGridViewFlightPlanning.Columns.Add(departureColumn);
 
             //ComboBox Airplane_ID
             DataGridViewComboBoxColumn airplaneColumn = new DataGridViewComboBoxColumn();
@@ -84,6 +68,24 @@ namespace ADO_Projekt
             statusColumn.DisplayMember = "Status_Name";
             statusColumn.ValueMember = "ID";
             dataGridViewFlightPlanning.Columns.Add(statusColumn);
+          
+            //Panel Arrival
+            DataGridViewTextBoxColumn arrivalColumn = new DataGridViewTextBoxColumn();
+            arrivalColumn.Name = "Arrival";
+            arrivalColumn.HeaderText = "Przylot";
+            arrivalColumn.DataPropertyName = "Arrival";
+            arrivalColumn.DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+            arrivalColumn.ReadOnly = true;
+            dataGridViewFlightPlanning.Columns.Add(arrivalColumn);
+
+            //Panel Departure
+            DataGridViewTextBoxColumn departureColumn = new DataGridViewTextBoxColumn();
+            departureColumn.Name = "Departure";
+            departureColumn.HeaderText = "Odlot";
+            departureColumn.DataPropertyName = "Departure";
+            departureColumn.DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+            departureColumn.ReadOnly = true;
+            dataGridViewFlightPlanning.Columns.Add(departureColumn);
         }
 
         private void dataGridViewFlightPlanning_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -92,17 +94,17 @@ namespace ADO_Projekt
             {
                 clickedCell = dataGridViewFlightPlanning.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
-                string columnName = dataGridViewFlightPlanning.Columns[e.ColumnIndex].HeaderText;
+                int airplaneID = Convert.ToInt32(dataGridViewFlightPlanning.Rows[e.RowIndex].Cells["Airplane"].Value);
                 DatePanel datepanel;
 
                 if (clickedCell.Value != null && clickedCell.Value != DBNull.Value)
                 {
                     DateTime cellDate = Convert.ToDateTime(clickedCell.Value);
-                    datepanel = new DatePanel(columnName, cellDate);
+                    datepanel = new DatePanel(airplaneID, cellDate);
                 }
                 else
                 {
-                    datepanel = new DatePanel(columnName);
+                    datepanel = new DatePanel(airplaneID);
                 }
 
                 datepanel.DateSelected += Datepanel_DateSelected;
@@ -121,8 +123,34 @@ namespace ADO_Projekt
         {
             if (clickedCell != null)
             {
-                clickedCell.Value = e.SelectedDateTime;
+                DataGridViewRow row = dataGridViewFlightPlanning.Rows[clickedCell.RowIndex];
+
+                // Determine which column was clicked and update appropriately
+                if (clickedCell.OwningColumn.Name == "Arrival")
+                {
+                    row.Cells["Arrival"].Value = e.Arrival;
+                    row.Cells["Departure"].Value = e.Departure; // Optionally set departure if needed
+                }
+                else if (clickedCell.OwningColumn.Name == "Departure")
+                {
+                    row.Cells["Departure"].Value = e.Departure;
+                    row.Cells["Arrival"].Value = e.Arrival; // Optionally set arrival if needed
+                }
             }
+        }
+        private void bindingNavigatorSaveButton_Click(object sender, EventArgs e)
+        {
+            dataGridViewFlightPlanning.EndEdit();
+            bindingSource.EndEdit();
+
+            if (helper.DataSetHasEmptyFields(flightsDataSet))
+            {
+                MessageBox.Show("W jednym z wierszy brakuje danych. Wszystkie pola są wymagane!");
+                return;
+            }
+
+            dbService.UpdateData(flightsDataSet, "flights");
+
         }
     }
 }

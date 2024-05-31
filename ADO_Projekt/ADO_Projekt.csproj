@@ -75,6 +75,7 @@
     <Compile Include="FormRunwayManagement.Designer.cs">
       <DependentUpon>FormRunwayManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DatePanel.resx">

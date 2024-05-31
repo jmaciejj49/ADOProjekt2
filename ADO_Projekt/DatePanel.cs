@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -10,25 +12,30 @@ namespace ADO_Projekt
     public partial class DatePanel : Form
     {
         public event EventHandler<DateSelectedEventArgs> DateSelected;
-        private string apiKey = "bab8ee939e4f449c89d190415241605";
+        private string apiKey = "57e179d3b5cd4769aa2155701243105";
         private string location = "Choroszcz";
         private bool weatherIsOk;
-        private string operation;
+        private int airplaneID;
 
-        public DatePanel(string operation, DateTime dateToDisplay = default(DateTime))
+        public DatePanel(int airplaneID, DateTime dateToDisplay = default(DateTime))
         {
             InitializeComponent();
-            this.operation = operation;
+            this.airplaneID = airplaneID;
 
             if (dateToDisplay == default(DateTime))
             {
                 dateToDisplay = DateTime.Now.AddDays(1);
             }
 
-            dateTimePickerDate.Value = dateToDisplay.Date;
-            dateTimePickerDate.MinDate = dateToDisplay.Date;
-            dateTimePickerDate.MaxDate = dateToDisplay.Date.AddDays(14);
-            dateTimePickerTime.Value = DateTimePickerTime(dateToDisplay.TimeOfDay);
+            datePickerArrival.Value = dateToDisplay.Date;
+            datePickerArrival.MinDate = dateToDisplay.Date;
+            datePickerArrival.MaxDate = dateToDisplay.Date.AddDays(14);
+            timePickerArrival.Value = DateTimePickerTime(dateToDisplay.TimeOfDay);
+
+            datePickerDeparture.Value = datePickerArrival.Value.Date.AddHours(1);
+            datePickerDeparture.MaxDate = datePickerArrival.Value.Date.AddDays(1);
+            datePickerDeparture.MinDate = datePickerArrival.Value.Date;
+            timePickerDeparture.Value = timePickerArrival.Value.AddMinutes(30);
         }
 
         private DateTime DateTimePickerTime(TimeSpan timeOfDay)
@@ -39,16 +46,19 @@ namespace ADO_Projekt
 
         private void DatePanel_Load(object sender, EventArgs e)
         {
-            dateTimePickerTime.Format = DateTimePickerFormat.Custom;
-            dateTimePickerTime.CustomFormat = "HH:mm";
-            labelOperation.Text = operation;
-            buttonSubmit.Visible = false;
+            timePickerArrival.Format = DateTimePickerFormat.Custom;
+            timePickerDeparture.Format = DateTimePickerFormat.Custom;
+
+            timePickerArrival.CustomFormat = "HH:mm";
+            timePickerDeparture.CustomFormat = "HH:mm";
+            
+            buttonSubmit.Enabled = false;
         }
 
         private async void buttonForecast_Click_1(object sender, EventArgs e)
         {
-            DateTime selectedDate = dateTimePickerDate.Value.Date;
-            TimeSpan selectedTime = dateTimePickerTime.Value.TimeOfDay;
+            DateTime selectedDate = datePickerArrival.Value.Date;
+            TimeSpan selectedTime = timePickerArrival.Value.TimeOfDay;
             DateTime selectedDateTime = selectedDate + selectedTime;
 
             string forecast = await GetWeatherForecastAsync(selectedDateTime);
@@ -61,7 +71,7 @@ namespace ADO_Projekt
 
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                HttpResponseMessage response = await client.GetAsync(apiUrl);//dodac obsluge bledu
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
@@ -84,12 +94,7 @@ namespace ADO_Projekt
                             weatherIsOk = weatherDescription == "Słonecznie" || weatherDescription == "Bezchmurnie" || weatherDescription == "Częściowe zachmurzenie";
                             if (weatherIsOk)
                             {
-                                labelWeatherStatus.Text = $"{operation} możliwy";
-                                buttonSubmit.Visible = true;
-                            }
-                            else
-                            {
-                                labelWeatherStatus.Text = $"{operation} niemożliwy";
+                                buttonSubmit.Enabled = true;
                             }
 
                             return $"Temperatura: {temp}°C\nPogoda: {weatherDescription}";
@@ -111,15 +116,66 @@ namespace ADO_Projekt
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            DateTime selectedDate = dateTimePickerDate.Value.Date;
-            TimeSpan selectedTime = dateTimePickerTime.Value.TimeOfDay;
-            DateTime selectedDateTime = selectedDate + selectedTime;
+            if (!ValidateData())
+            {
+                return;
+            }
+            DateTime arrival = datePickerArrival.Value.Date + timePickerArrival.Value.TimeOfDay;
+            DateTime departure = datePickerDeparture.Value.Date + timePickerDeparture.Value.TimeOfDay;
 
-            DateSelected?.Invoke(this, new DateSelectedEventArgs { SelectedDateTime = selectedDateTime });
+            DateSelected?.Invoke(this, new DateSelectedEventArgs { Arrival = arrival, Departure = departure });
+
+            this.Close();
+
 
             this.Close();
         }
+        private bool ValidateData()
+        {
 
+            DateTime arrival = datePickerArrival.Value.Date + timePickerArrival.Value.TimeOfDay;
+            DateTime departure = datePickerDeparture.Value.Date + timePickerDeparture.Value.TimeOfDay;
+
+            //airplaneID musi byc przekazywane w formflights do DatePanel jako parametr 
+
+            if (arrival >= departure)
+            {
+                MessageBox.Show("Przylot musi być wcześniejszy niż odlot.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            int minimumGroundTime = GetMinimumGroundTime(airplaneID);
+            if ((departure - arrival).TotalMinutes < minimumGroundTime)
+            {
+                MessageBox.Show($"Minimalny czas postuju dla tego samolotu wynosi: {minimumGroundTime} minut.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if ((departure - arrival).TotalMinutes > minimumGroundTime * 3)
+            {
+                MessageBox.Show($"Maksymalny czas postoju dla tego samoloty wynosi: {minimumGroundTime * 3} minut");
+                return false;
+            }
+            return true;
+        }
+        private int GetMinimumGroundTime(int airplaneID)
+        {
+            string query = @"
+                SELECT gt.Minimum_GroundTime 
+                FROM airplane_models am
+                INNER JOIN ground_times gt ON am.GroundTime_ID = gt.ID
+                INNER JOIN airplanes a ON am.ID = a.Airplane_Model_ID
+                WHERE a.ID = @AirplaneID";
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AirplaneID", airplaneID);
+                    connection.Open();
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
         private void labelWeatherOK_Click(object sender, EventArgs e)
         {
 
@@ -127,18 +183,18 @@ namespace ADO_Projekt
 
         private void dateTimePickerTime_ValueChanged(object sender, EventArgs e)
         {
-            resetWeather();
+            ResetWeather();
         }
 
         private void dateTimePickerDate_ValueChanged(object sender, EventArgs e)
         {
-            resetWeather();
+            ResetWeather();
         }
         
-        private void resetWeather()
+        private void ResetWeather()
         {
             weatherIsOk = false;
-            buttonSubmit.Visible = false;
+            buttonSubmit.Enabled = false;
             labelWeatherStatus.Text = string.Empty;
             labelWeather.Text = string.Empty;
         }
@@ -146,6 +202,7 @@ namespace ADO_Projekt
 
     public class DateSelectedEventArgs : EventArgs
     {
-        public DateTime SelectedDateTime { get; set; }
+        public DateTime Arrival { get; set; }
+        public DateTime Departure { get; set; }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Windows.Forms;
+using System.Text;
 
 public class DbService
 {
@@ -22,13 +25,25 @@ public class DbService
         }
     }
 
-    public void UpdateData(DataSet dataSet, string query, string dataTable)
+    public void UpdateData(DataSet dataSet, string tableName)
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter);
-            adapter.Update(dataSet, dataTable);
+            string selectQuery = $"SELECT * FROM {tableName}";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(selectQuery, connection);
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+            DataTable table = dataSet.Tables[tableName];
+
+            adapter.UpdateCommand = builder.GetUpdateCommand();
+            adapter.InsertCommand = builder.GetInsertCommand();
+            adapter.DeleteCommand = builder.GetDeleteCommand();
+
+            adapter.Update(dataSet, tableName);
+            MessageBox.Show("Żądanie zostało wysłane");
+            dataSet.AcceptChanges();
         }
     }
+
+
 }
