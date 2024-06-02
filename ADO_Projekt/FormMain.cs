@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ADO_Projekt
 {
     public partial class FormMain : Form
     {
-        private DbService dbService;
+        private DBService dbService;
         private DataSet dataSet;
         private BindingSource bindingSource;
 
         public FormMain()
         {
             InitializeComponent();
-            dbService = new DbService();
+            dbService = new DBService();
             LoadData();
         }
 
@@ -59,9 +53,20 @@ namespace ADO_Projekt
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FormFlights flights = new FormFlights();
-            flights.ShowDialog();
+            FormFlights flightsForm = new FormFlights();
+            flightsForm.ShowDialog();
             
+        }
+
+        private void buttonRefreshDataSet_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void buttonRunwaySchedule_Click(object sender, EventArgs e)
+        {
+            FormRunwayManagement runwayForm = new FormRunwayManagement();
+            runwayForm.ShowDialog();
         }
     }
 }

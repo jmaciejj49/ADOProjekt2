@@ -15,12 +15,11 @@ namespace ADO_Projekt
     public partial class FormFlights : Form
     {
         private BindingSource bindingSource = new BindingSource();
-        private DbService dbService = new DbService();
+        private DBService dbService = new DBService();
         private string query = "SELECT * FROM flights";
         private string table = "flights";
         private DataGridViewCell clickedCell;
         private DataSet flightsDataSet;
-        private readonly Helper helper = new Helper();
 
         public FormFlights()
         {
@@ -94,17 +93,23 @@ namespace ADO_Projekt
             {
                 clickedCell = dataGridViewFlightPlanning.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
+                var rowIDValue = dataGridViewFlightPlanning.Rows[e.RowIndex].Cells["Airplane"].Value;
+                if (rowIDValue == null || DBNull.Value.Equals(rowIDValue))
+                {
+                    MessageBox.Show("Przed wyznaczeniem terminu należy wybrać samolot!");
+                    return;
+                }
                 int airplaneID = Convert.ToInt32(dataGridViewFlightPlanning.Rows[e.RowIndex].Cells["Airplane"].Value);
-                DatePanel datepanel;
+                FlightsPopup datepanel;
 
                 if (clickedCell.Value != null && clickedCell.Value != DBNull.Value)
                 {
                     DateTime cellDate = Convert.ToDateTime(clickedCell.Value);
-                    datepanel = new DatePanel(airplaneID, cellDate);
+                    datepanel = new FlightsPopup(airplaneID, cellDate);
                 }
                 else
                 {
-                    datepanel = new DatePanel(airplaneID);
+                    datepanel = new FlightsPopup(airplaneID);
                 }
 
                 datepanel.DateSelected += Datepanel_DateSelected;
@@ -143,11 +148,11 @@ namespace ADO_Projekt
             dataGridViewFlightPlanning.EndEdit();
             bindingSource.EndEdit();
 
-            if (helper.DataSetHasEmptyFields(flightsDataSet))
-            {
-                MessageBox.Show("W jednym z wierszy brakuje danych. Wszystkie pola są wymagane!");
-                return;
-            }
+            //if (helper.DataSetHasEmptyFields(flightsDataSet))
+            //{
+            //    MessageBox.Show("W jednym z wierszy brakuje danych. Wszystkie pola są wymagane!");
+            //    return;
+            //}
 
             dbService.UpdateData(flightsDataSet, "flights");
 

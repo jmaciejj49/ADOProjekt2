@@ -4,20 +4,23 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ADO_Projekt
 {
-    public partial class DatePanel : Form
+    public partial class FlightsPopup : Form
     {
         public event EventHandler<DateSelectedEventArgs> DateSelected;
         private string apiKey = "57e179d3b5cd4769aa2155701243105";
         private string location = "Choroszcz";
         private bool weatherIsOk;
         private int airplaneID;
+        DBHelper dbHelper = new DBHelper();
+        DataHelper dataHelper = new DataHelper();
 
-        public DatePanel(int airplaneID, DateTime dateToDisplay = default(DateTime))
+        public FlightsPopup(int airplaneID, DateTime dateToDisplay = default(DateTime))
         {
             InitializeComponent();
             this.airplaneID = airplaneID;
@@ -65,7 +68,7 @@ namespace ADO_Projekt
             labelWeather.Text = forecast;
         }
 
-        private async Task<string> GetWeatherForecastAsync(DateTime dateTime)
+        private async Task<string> GetWeatherForecastAsync(DateTime dateTime) //Prognoza pogody
         {
             string apiUrl = $"http://api.weatherapi.com/v1/forecast.json?key={apiKey}&q={location}&dt={dateTime.ToString("yyyy-MM-dd")}&lang=pl";
 
@@ -95,6 +98,11 @@ namespace ADO_Projekt
                             if (weatherIsOk)
                             {
                                 buttonSubmit.Enabled = true;
+                                labelStatus.Text = "Przylot możliwy";
+                            }
+                            else
+                            {
+                                labelStatus.Text = "Przylot niemożliwy";
                             }
 
                             return $"Temperatura: {temp}°C\nPogoda: {weatherDescription}";
@@ -114,68 +122,20 @@ namespace ADO_Projekt
             this.Close();
         }
 
-        private void buttonSubmit_Click(object sender, EventArgs e)
+        private void buttonSubmit_Click(object sender, EventArgs e) //Wysłanie update
         {
-            if (!ValidateData())
+            DateTime arrival = datePickerArrival.Value.Date + timePickerArrival.Value.TimeOfDay;
+            DateTime departure = datePickerDeparture.Value.Date + timePickerDeparture.Value.TimeOfDay;
+
+            if (!dataHelper.ValidateFlightData(arrival,departure,airplaneID))
             {
                 return;
             }
-            DateTime arrival = datePickerArrival.Value.Date + timePickerArrival.Value.TimeOfDay;
-            DateTime departure = datePickerDeparture.Value.Date + timePickerDeparture.Value.TimeOfDay;
 
             DateSelected?.Invoke(this, new DateSelectedEventArgs { Arrival = arrival, Departure = departure });
-
-            this.Close();
-
-
             this.Close();
         }
-        private bool ValidateData()
-        {
 
-            DateTime arrival = datePickerArrival.Value.Date + timePickerArrival.Value.TimeOfDay;
-            DateTime departure = datePickerDeparture.Value.Date + timePickerDeparture.Value.TimeOfDay;
-
-            //airplaneID musi byc przekazywane w formflights do DatePanel jako parametr 
-
-            if (arrival >= departure)
-            {
-                MessageBox.Show("Przylot musi być wcześniejszy niż odlot.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            int minimumGroundTime = GetMinimumGroundTime(airplaneID);
-            if ((departure - arrival).TotalMinutes < minimumGroundTime)
-            {
-                MessageBox.Show($"Minimalny czas postuju dla tego samolotu wynosi: {minimumGroundTime} minut.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if ((departure - arrival).TotalMinutes > minimumGroundTime * 3)
-            {
-                MessageBox.Show($"Maksymalny czas postoju dla tego samoloty wynosi: {minimumGroundTime * 3} minut");
-                return false;
-            }
-            return true;
-        }
-        private int GetMinimumGroundTime(int airplaneID)
-        {
-            string query = @"
-                SELECT gt.Minimum_GroundTime 
-                FROM airplane_models am
-                INNER JOIN ground_times gt ON am.GroundTime_ID = gt.ID
-                INNER JOIN airplanes a ON am.ID = a.Airplane_Model_ID
-                WHERE a.ID = @AirplaneID";
-
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyDBConnectionString"].ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@AirplaneID", airplaneID);
-                    connection.Open();
-                    return Convert.ToInt32(command.ExecuteScalar());
-                }
-            }
-        }
         private void labelWeatherOK_Click(object sender, EventArgs e)
         {
 
@@ -186,17 +146,28 @@ namespace ADO_Projekt
             ResetWeather();
         }
 
-        private void dateTimePickerDate_ValueChanged(object sender, EventArgs e)
+        private void dateTimePickerDate_ValueChanged(object sender, EventArgs e) //Zmiana wartości daty w datePickerze departure
         {
+            DateTime newDate = datePickerArrival.Value.Date;
+            datePickerDeparture.MaxDate = datePickerArrival.MaxDate;
+            datePickerDeparture.MinDate = newDate;
+            datePickerDeparture.MaxDate = (newDate.AddDays(1) <= datePickerArrival.MaxDate) ? newDate.AddDays(1) : datePickerArrival.MaxDate;
+            datePickerDeparture.Value = newDate.AddHours(1);
+
             ResetWeather();
         }
         
-        private void ResetWeather()
+        private void ResetWeather() //Resetowanie prognozy pogody po zmianie daty/godziny
         {
             weatherIsOk = false;
             buttonSubmit.Enabled = false;
-            labelWeatherStatus.Text = string.Empty;
+            labelStatus.Text = string.Empty;
             labelWeather.Text = string.Empty;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

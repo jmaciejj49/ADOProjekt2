@@ -19,7 +19,6 @@ C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\bin\Debug\ADO_P
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\bin\Debug\Newtonsoft.Json.dll
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\bin\Debug\Newtonsoft.Json.xml
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.csproj.AssemblyReference.cache
-C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.DatePanel.resources
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.FormFlights.resources
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.FormMain.resources
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.Properties.Resources.resources
@@ -28,3 +27,6 @@ C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_P
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.csproj.CopyComplete
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.exe
 C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.pdb
+C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.FormRunwayManagement.resources
+C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.FlightsPopup.resources
+C:\Users\olenk\OneDrive\Dokumenty\GitHub\ADOProjekt2\ADO_Projekt\obj\Debug\ADO_Projekt.RunwayPopup.resources

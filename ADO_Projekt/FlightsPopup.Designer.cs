@@ -1,6 +1,6 @@
 ﻿namespace ADO_Projekt
 {
-    partial class DatePanel
+    partial class FlightsPopup
     {
         /// <summary>
         /// Required designer variable.
@@ -48,6 +48,7 @@
             this.timePickerDeparture = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.labelStatus = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelArrival.SuspendLayout();
             this.panelDeparture.SuspendLayout();
@@ -59,10 +60,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.Black;
-            this.buttonClose.Location = new System.Drawing.Point(10, 424);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonClose.Location = new System.Drawing.Point(7, 276);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(257, 56);
+            this.buttonClose.Size = new System.Drawing.Size(171, 36);
             this.buttonClose.TabIndex = 0;
             this.buttonClose.Text = "Anuluj";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -72,10 +73,10 @@
             // 
             this.datePickerArrival.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.datePickerArrival.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePickerArrival.Location = new System.Drawing.Point(88, 51);
-            this.datePickerArrival.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.datePickerArrival.Location = new System.Drawing.Point(59, 33);
+            this.datePickerArrival.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.datePickerArrival.Name = "datePickerArrival";
-            this.datePickerArrival.Size = new System.Drawing.Size(186, 36);
+            this.datePickerArrival.Size = new System.Drawing.Size(125, 27);
             this.datePickerArrival.TabIndex = 1;
             this.datePickerArrival.ValueChanged += new System.EventHandler(this.dateTimePickerDate_ValueChanged);
             // 
@@ -85,10 +86,10 @@
             this.buttonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSubmit.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSubmit.ForeColor = System.Drawing.Color.Black;
-            this.buttonSubmit.Location = new System.Drawing.Point(267, 424);
-            this.buttonSubmit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSubmit.Location = new System.Drawing.Point(178, 276);
+            this.buttonSubmit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(276, 56);
+            this.buttonSubmit.Size = new System.Drawing.Size(184, 36);
             this.buttonSubmit.TabIndex = 3;
             this.buttonSubmit.Text = "Zatwierdź";
             this.buttonSubmit.UseVisualStyleBackColor = false;
@@ -98,9 +99,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(20, 51);
+            this.label1.Location = new System.Drawing.Point(13, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 30);
+            this.label1.Size = new System.Drawing.Size(44, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Data:";
             // 
@@ -108,9 +110,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(290, 51);
+            this.label2.Location = new System.Drawing.Point(193, 33);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 30);
+            this.label2.Size = new System.Drawing.Size(67, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Godzina:";
             // 
@@ -118,11 +121,11 @@
             // 
             this.timePickerArrival.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.timePickerArrival.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePickerArrival.Location = new System.Drawing.Point(393, 51);
-            this.timePickerArrival.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.timePickerArrival.Location = new System.Drawing.Point(262, 33);
+            this.timePickerArrival.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.timePickerArrival.Name = "timePickerArrival";
             this.timePickerArrival.ShowUpDown = true;
-            this.timePickerArrival.Size = new System.Drawing.Size(122, 36);
+            this.timePickerArrival.Size = new System.Drawing.Size(83, 27);
             this.timePickerArrival.TabIndex = 2;
             this.timePickerArrival.ValueChanged += new System.EventHandler(this.dateTimePickerTime_ValueChanged);
             // 
@@ -132,10 +135,10 @@
             this.buttonForecast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonForecast.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonForecast.ForeColor = System.Drawing.Color.Black;
-            this.buttonForecast.Location = new System.Drawing.Point(10, 111);
-            this.buttonForecast.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonForecast.Location = new System.Drawing.Point(7, 72);
+            this.buttonForecast.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonForecast.Name = "buttonForecast";
-            this.buttonForecast.Size = new System.Drawing.Size(533, 56);
+            this.buttonForecast.Size = new System.Drawing.Size(355, 36);
             this.buttonForecast.TabIndex = 7;
             this.buttonForecast.Text = "Sprawdź pogodę";
             this.buttonForecast.UseVisualStyleBackColor = false;
@@ -145,39 +148,44 @@
             // 
             this.labelWeather.AutoSize = true;
             this.labelWeather.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelWeather.Location = new System.Drawing.Point(10, 21);
+            this.labelWeather.Location = new System.Drawing.Point(7, 14);
+            this.labelWeather.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWeather.Name = "labelWeather";
-            this.labelWeather.Size = new System.Drawing.Size(0, 30);
+            this.labelWeather.Size = new System.Drawing.Size(0, 20);
             this.labelWeather.TabIndex = 8;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.labelStatus);
             this.panel1.Controls.Add(this.labelWeatherStatus);
             this.panel1.Controls.Add(this.labelWeatherOK);
             this.panel1.Controls.Add(this.labelWeather);
-            this.panel1.Location = new System.Drawing.Point(10, 166);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(7, 108);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 158);
+            this.panel1.Size = new System.Drawing.Size(355, 103);
             this.panel1.TabIndex = 9;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // labelWeatherStatus
             // 
             this.labelWeatherStatus.AutoSize = true;
             this.labelWeatherStatus.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelWeatherStatus.Location = new System.Drawing.Point(90, 101);
+            this.labelWeatherStatus.Location = new System.Drawing.Point(60, 66);
+            this.labelWeatherStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWeatherStatus.Name = "labelWeatherStatus";
-            this.labelWeatherStatus.Size = new System.Drawing.Size(0, 30);
+            this.labelWeatherStatus.Size = new System.Drawing.Size(0, 20);
             this.labelWeatherStatus.TabIndex = 10;
             // 
             // labelWeatherOK
             // 
             this.labelWeatherOK.AutoSize = true;
             this.labelWeatherOK.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelWeatherOK.Location = new System.Drawing.Point(11, 101);
+            this.labelWeatherOK.Location = new System.Drawing.Point(7, 66);
+            this.labelWeatherOK.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWeatherOK.Name = "labelWeatherOK";
-            this.labelWeatherOK.Size = new System.Drawing.Size(78, 30);
+            this.labelWeatherOK.Size = new System.Drawing.Size(54, 20);
             this.labelWeatherOK.TabIndex = 9;
             this.labelWeatherOK.Text = "Status:";
             this.labelWeatherOK.Click += new System.EventHandler(this.labelWeatherOK_Click);
@@ -190,18 +198,20 @@
             this.panelArrival.Controls.Add(this.timePickerArrival);
             this.panelArrival.Controls.Add(this.label1);
             this.panelArrival.Controls.Add(this.label2);
-            this.panelArrival.Location = new System.Drawing.Point(10, 11);
+            this.panelArrival.Location = new System.Drawing.Point(7, 7);
+            this.panelArrival.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelArrival.Name = "panelArrival";
-            this.panelArrival.Size = new System.Drawing.Size(533, 100);
+            this.panelArrival.Size = new System.Drawing.Size(355, 65);
             this.panelArrival.TabIndex = 10;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(4, 4);
+            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 32);
+            this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 14;
             this.label6.Text = "Przylot";
             // 
@@ -213,18 +223,20 @@
             this.panelDeparture.Controls.Add(this.timePickerDeparture);
             this.panelDeparture.Controls.Add(this.label3);
             this.panelDeparture.Controls.Add(this.label4);
-            this.panelDeparture.Location = new System.Drawing.Point(10, 324);
+            this.panelDeparture.Location = new System.Drawing.Point(7, 211);
+            this.panelDeparture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelDeparture.Name = "panelDeparture";
-            this.panelDeparture.Size = new System.Drawing.Size(533, 100);
+            this.panelDeparture.Size = new System.Drawing.Size(355, 65);
             this.panelDeparture.TabIndex = 12;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(5, 5);
+            this.label7.Location = new System.Drawing.Point(3, 3);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 32);
+            this.label7.Size = new System.Drawing.Size(53, 21);
             this.label7.TabIndex = 15;
             this.label7.Text = "Odlot";
             // 
@@ -232,30 +244,31 @@
             // 
             this.datePickerDeparture.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.datePickerDeparture.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePickerDeparture.Location = new System.Drawing.Point(86, 49);
-            this.datePickerDeparture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.datePickerDeparture.Location = new System.Drawing.Point(57, 32);
+            this.datePickerDeparture.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.datePickerDeparture.Name = "datePickerDeparture";
-            this.datePickerDeparture.Size = new System.Drawing.Size(186, 36);
+            this.datePickerDeparture.Size = new System.Drawing.Size(125, 27);
             this.datePickerDeparture.TabIndex = 1;
             // 
             // timePickerDeparture
             // 
             this.timePickerDeparture.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.timePickerDeparture.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePickerDeparture.Location = new System.Drawing.Point(391, 49);
-            this.timePickerDeparture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.timePickerDeparture.Location = new System.Drawing.Point(261, 32);
+            this.timePickerDeparture.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.timePickerDeparture.Name = "timePickerDeparture";
             this.timePickerDeparture.ShowUpDown = true;
-            this.timePickerDeparture.Size = new System.Drawing.Size(122, 36);
+            this.timePickerDeparture.Size = new System.Drawing.Size(83, 27);
             this.timePickerDeparture.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(18, 49);
+            this.label3.Location = new System.Drawing.Point(12, 32);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 30);
+            this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Data:";
             // 
@@ -263,18 +276,29 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(288, 49);
+            this.label4.Location = new System.Drawing.Point(192, 32);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 30);
+            this.label4.Size = new System.Drawing.Size(67, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Godzina:";
             // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelStatus.Location = new System.Drawing.Point(60, 66);
+            this.labelStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(0, 20);
+            this.labelStatus.TabIndex = 11;
+            // 
             // DatePanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(554, 493);
+            this.ClientSize = new System.Drawing.Size(369, 320);
             this.Controls.Add(this.panelDeparture);
             this.Controls.Add(this.panelArrival);
             this.Controls.Add(this.panel1);
@@ -282,7 +306,7 @@
             this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.buttonClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "DatePanel";
             this.Text = "DatePanel";
             this.Load += new System.EventHandler(this.DatePanel_Load);
@@ -318,5 +342,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelStatus;
     }
 }
