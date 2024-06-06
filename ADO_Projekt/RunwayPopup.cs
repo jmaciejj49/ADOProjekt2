@@ -5,30 +5,41 @@ namespace ADO_Projekt
 {
     public partial class RunwayPopup : Form
     {
-        public event EventHandler<RunwayDateSelectedEventArgs> RunwayDateSelected;
-        public class RunwayDateSelectedEventArgs : EventArgs
+        public event EventHandler<RunwayPanelArguments> RunwayDateSelected;
+        private readonly DataHelper dataHelper = new DataHelper();
+        private readonly DBHelper dbHelper = new DBHelper();
+        private RunwayPanelArguments _initialArguments;
+        public class RunwayPanelArguments : EventArgs
         {
             public DateTime StartsAt { get; set; }
             public DateTime EndsAt { get; set; }
-            public bool isActive { get; set; }
+            public bool IsActive { get; set; }
+            public int? EntityID { get; set; }
         }
 
-
-        public RunwayPopup(DateTime dateToDisplay = default(DateTime))
+        public RunwayPopup(RunwayPanelArguments initialArguments)
         {
             InitializeComponent();
+            _initialArguments = initialArguments;
 
-
-            if (dateToDisplay == default(DateTime))
+            if(initialArguments != null )
             {
-                dateToDisplay = DateTime.Now.AddDays(1);
+                datePickerStartsAt.Value = initialArguments.StartsAt;
+                datePickerEndsAt.Value = initialArguments.EndsAt;
+
+                timePickerStartsAt.Value = initialArguments.StartsAt;
+                timePickerEndsAt.Value = initialArguments.EndsAt;
+
+                checkBoxActive.Checked = initialArguments.IsActive;
             }
-
-            datePickerStartsAt.Value = dateToDisplay;
-            timePickerStartsAt.Value = dateToDisplay;
-
-            datePickerEndsAt.Value = dateToDisplay.AddHours(1);
-            timePickerEndsAt.Value = dateToDisplay.AddHours(1);
+            else
+            {
+                DateTime dateToDisplay = DateTime.Now;
+                datePickerStartsAt.Value = dateToDisplay;
+                timePickerStartsAt.Value = dateToDisplay;
+                datePickerEndsAt.Value = dateToDisplay.AddHours(1);
+                timePickerEndsAt.Value = dateToDisplay.AddHours(1);
+            }
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -46,13 +57,42 @@ namespace ADO_Projekt
         {
             DateTime startsAt = datePickerStartsAt.Value.Date + timePickerStartsAt.Value.TimeOfDay;
             DateTime endsAt = datePickerEndsAt.Value.Date + timePickerEndsAt.Value.TimeOfDay;
+            bool checkboxValue = checkBoxActive.Checked;
 
-            //ValidateRunwayData()
+            int? scheduleEntityID = _initialArguments?.EntityID;
 
-            RunwayDateSelected?.Invoke(this, new RunwayDateSelectedEventArgs {StartsAt = startsAt, 
-                EndsAt = endsAt, isActive = checkBoxActive.Checked });
+            RunwayPanelArguments arguments = new RunwayPanelArguments
+            {
+                StartsAt = startsAt,
+                EndsAt = endsAt,
+                IsActive = checkboxValue,
+                EntityID = scheduleEntityID
+            };
+
+            if (!dataHelper.ValidateRunwayData(arguments))
+            {
+                return;
+            }
+
+            bool runwayStatusCheck = scheduleEntityID.HasValue
+                ? dbHelper.RunwayStatusDateTaken(startsAt, endsAt, scheduleEntityID.Value)
+                : dbHelper.RunwayStatusDateTaken(startsAt, endsAt);
+
+            if (!runwayStatusCheck)
+            {
+                MessageBox.Show("Dla podanego okresu czasu istnieje już wpis!");
+                return;
+            }
+            if (dbHelper.FlightScheduleDateTaken(startsAt, endsAt))
+            {
+                MessageBox.Show("Dla podanego okresu czasu zaplanowane są loty!");
+                return;
+            }
+
+            RunwayDateSelected?.Invoke(this, arguments);
             this.Close();
         }
+
 
         private void RunwayPopup_Load(object sender, EventArgs e)
         {

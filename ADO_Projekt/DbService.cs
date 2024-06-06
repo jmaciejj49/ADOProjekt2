@@ -24,7 +24,23 @@ public class DBService
             return dataSet;
         }
     }
+    public DataSet LoadProcedureData(string procedureName, SqlParameter[] parameters, string dataTable)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = new SqlCommand(procedureName, connection);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            if (parameters != null)
+            {
+                adapter.SelectCommand.Parameters.AddRange(parameters);
+            }
 
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet, dataTable);
+            return dataSet;
+        }
+    }
     public void UpdateData(DataSet dataSet, string tableName)
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
@@ -39,25 +55,28 @@ public class DBService
                 adapter.InsertCommand = builder.GetInsertCommand();
                 adapter.DeleteCommand = builder.GetDeleteCommand();
 
-                // Aktualizacja bazy danych
                 adapter.Update(dataSet, tableName);
                 dataSet.AcceptChanges(); 
-                MessageBox.Show("Żądanie zostało wysłane");
+                MessageBox.Show("Dane zostały zaktualizowane");
             }
             catch (SqlException ex)
             {
                 if (ex.Number == 515) 
                 {
-                    MessageBox.Show("Jeden z wierszy ma puste pole, które jest wymagane. Wypełnij wszystkie wymagane pola przed zapisem.", "Błąd wstawiania", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Jeden z wierszy ma puste pole, które jest wymagane. " +
+                        "Wypełnij wszystkie wymagane pola przed zapisem.", 
+                        "Błąd wstawiania", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show($"Wystąpił błąd bazy danych: {ex.Message}", "Błąd bazy danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Wystąpił błąd bazy danych: {ex.Message}", 
+                        "Błąd bazy danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił nieoczekiwany błąd: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Wystąpił nieoczekiwany błąd: {ex.Message}", 
+                    "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

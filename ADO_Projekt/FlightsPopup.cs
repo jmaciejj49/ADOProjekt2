@@ -68,13 +68,13 @@ namespace ADO_Projekt
             labelWeather.Text = forecast;
         }
 
-        private async Task<string> GetWeatherForecastAsync(DateTime dateTime) //Prognoza pogody
+        private async Task<string> GetWeatherForecastAsync(DateTime dateTime)
         {
             string apiUrl = $"http://api.weatherapi.com/v1/forecast.json?key={apiKey}&q={location}&dt={dateTime.ToString("yyyy-MM-dd")}&lang=pl";
 
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);//dodac obsluge bledu
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
@@ -122,17 +122,32 @@ namespace ADO_Projekt
             this.Close();
         }
 
-        private void buttonSubmit_Click(object sender, EventArgs e) //Wysłanie update
+        private void buttonSubmit_Click(object sender, EventArgs e)
         {
             DateTime arrival = datePickerArrival.Value.Date + timePickerArrival.Value.TimeOfDay;
             DateTime departure = datePickerDeparture.Value.Date + timePickerDeparture.Value.TimeOfDay;
+            DateSelectedEventArgs arguments = new DateSelectedEventArgs { Arrival = arrival, Departure = departure };
 
             if (!dataHelper.ValidateFlightData(arrival,departure,airplaneID))
             {
                 return;
             }
-
-            DateSelected?.Invoke(this, new DateSelectedEventArgs { Arrival = arrival, Departure = departure });
+            if (!dbHelper.GetRunwayStatus(arrival, departure))
+            {
+                MessageBox.Show("W wybranym terminie pas startowy jest niedostępny");
+                return;
+            }
+            if (dbHelper.IsAirplaneAlreadyScheduled(arrival, departure, airplaneID))
+            {
+                MessageBox.Show("Samolot ma już zaplanowany przylot w wybranym okresie. Minimalny bufor czasu wynosi 2h!");
+                return;
+            }
+            if(dbHelper.IsApronAlreadyScheduled(arrival, departure))
+            {
+                MessageBox.Show("W wybranym okresie płyta postojowa jest już zajęta przez inny samolot. Wybierz inny termin.");
+                return;
+            }
+            DateSelected?.Invoke(this, arguments);
             this.Close();
         }
 
@@ -146,7 +161,7 @@ namespace ADO_Projekt
             ResetWeather();
         }
 
-        private void dateTimePickerDate_ValueChanged(object sender, EventArgs e) //Zmiana wartości daty w datePickerze departure
+        private void dateTimePickerDate_ValueChanged(object sender, EventArgs e)
         {
             DateTime newDate = datePickerArrival.Value.Date;
             datePickerDeparture.MaxDate = datePickerArrival.MaxDate;
@@ -157,7 +172,7 @@ namespace ADO_Projekt
             ResetWeather();
         }
         
-        private void ResetWeather() //Resetowanie prognozy pogody po zmianie daty/godziny
+        private void ResetWeather()
         {
             weatherIsOk = false;
             buttonSubmit.Enabled = false;

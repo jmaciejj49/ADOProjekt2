@@ -21,10 +21,15 @@ namespace ADO_Projekt
         private DataGridViewCell clickedCell;
         private DataSet flightsDataSet;
 
+        public delegate void DataUpdatedEventHandler();
+        public event DataUpdatedEventHandler DataUpdated;
+
         public FormFlights()
         {
             InitializeComponent();
-            ConfigureDataGridView(); 
+            ConfigureDataGridView();
+            AddCustomDeleteButton();
+            DisableDefaultDelete();
         }
 
         private void FormFlights_Load(object sender, EventArgs e)
@@ -50,9 +55,12 @@ namespace ADO_Projekt
             //ComboBox Airplane_ID
             DataGridViewComboBoxColumn airplaneColumn = new DataGridViewComboBoxColumn();
             airplaneColumn.Name = "Airplane";
-            airplaneColumn.HeaderText = "Airplane";
+            airplaneColumn.HeaderText = "Samolot";
             airplaneColumn.DataPropertyName = "Airplane_ID";
-            airplaneColumn.DataSource = dbService.LoadData("SELECT AircraftID, CONCAT(Manufacturer, ' ', ModelName) AS AircraftDetails FROM aircraft_information", "AircraftDetails").Tables["AircraftDetails"];
+            string query = "SELECT AircraftID, CallSign + ' - ' + CONCAT(Manufacturer, ' ', ModelName) AS AircraftDetails FROM aircraft_information";
+            DataSet aircraftDataSet = dbService.LoadData(query, "AircraftDetails");
+
+            airplaneColumn.DataSource = aircraftDataSet.Tables["AircraftDetails"];
             airplaneColumn.DisplayMember = "AircraftDetails";
             airplaneColumn.ValueMember = "AircraftID";
             airplaneColumn.MinimumWidth = 250;
@@ -129,18 +137,8 @@ namespace ADO_Projekt
             if (clickedCell != null)
             {
                 DataGridViewRow row = dataGridViewFlightPlanning.Rows[clickedCell.RowIndex];
-
-                // Determine which column was clicked and update appropriately
-                if (clickedCell.OwningColumn.Name == "Arrival")
-                {
-                    row.Cells["Arrival"].Value = e.Arrival;
-                    row.Cells["Departure"].Value = e.Departure; // Optionally set departure if needed
-                }
-                else if (clickedCell.OwningColumn.Name == "Departure")
-                {
-                    row.Cells["Departure"].Value = e.Departure;
-                    row.Cells["Arrival"].Value = e.Arrival; // Optionally set arrival if needed
-                }
+                row.Cells["Arrival"].Value = e.Arrival;
+                row.Cells["Departure"].Value = e.Departure;
             }
         }
         private void bindingNavigatorSaveButton_Click(object sender, EventArgs e)
@@ -148,14 +146,40 @@ namespace ADO_Projekt
             dataGridViewFlightPlanning.EndEdit();
             bindingSource.EndEdit();
 
-            //if (helper.DataSetHasEmptyFields(flightsDataSet))
-            //{
-            //    MessageBox.Show("W jednym z wierszy brakuje danych. Wszystkie pola są wymagane!");
-            //    return;
-            //}
-
             dbService.UpdateData(flightsDataSet, "flights");
+            DataUpdated?.Invoke();
 
+        }
+        private void AddCustomDeleteButton()
+        {
+            ToolStripButton deleteButton = new ToolStripButton();
+            deleteButton.Text = "Usuń";
+            deleteButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            deleteButton.Click += CustomDeleteButtonClick;
+            bindingNavigatorFlightPlanning.Items.Add(deleteButton);
+        }
+        private void DisableDefaultDelete()
+        {
+            bindingNavigatorDeleteItem.Enabled = false;
+        }
+        private void CustomDeleteButtonClick(object sender, EventArgs e)
+        {
+            if (dataGridViewFlightPlanning.CurrentRow == null || dataGridViewFlightPlanning.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Nie wybrano żadnego wiersza do usunięcia lub wiersz jest nowym wierszem.");
+                return;
+            }
+
+            DataRowView currentRowView = dataGridViewFlightPlanning.CurrentRow.DataBoundItem as DataRowView;
+
+            if (currentRowView != null && currentRowView.Row.RowState == DataRowState.Detached)
+            {
+                dataGridViewFlightPlanning.Rows.RemoveAt(dataGridViewFlightPlanning.CurrentRow.Index);
+            }
+            else
+            {
+                MessageBox.Show("Nie można usunąć zapisanych lub załadowanych danych.");
+            }
         }
     }
 }

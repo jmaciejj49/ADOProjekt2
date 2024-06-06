@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ADO_Projekt.RunwayPopup;
 
 namespace ADO_Projekt
 {
@@ -19,7 +20,7 @@ namespace ADO_Projekt
             }
 
             int minimumGroundTime = dbHelper.GetMinimumGroundTime(airplaneID);
-            if ((departure - arrival).TotalMinutes < minimumGroundTime) //Minimalny czas postosju samolotu
+            if ((departure - arrival).TotalMinutes < minimumGroundTime) //Minimalny czas postoju samolotu
             {
                 MessageBox.Show($"Minimalny czas postuju dla tego samolotu wynosi: {minimumGroundTime} minut.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -32,16 +33,18 @@ namespace ADO_Projekt
             return true;
         }
 
-        public bool ValidateRunwayData(DateTime startsAt, DateTime endsAt, bool isActive)
+        public bool ValidateRunwayData(RunwayPanelArguments arguments)
         {
-            if (startsAt > endsAt)
+            if (arguments.StartsAt > arguments.EndsAt)
             {
-                MessageBox.Show("Blomnt");
+                MessageBox.Show("Nieprawidłowy okres czasu");
                 return false;
             }
-            //sprawdzic czy w tym okresie nie ma zaplanowanego lotu
-                //1. stworzyc widok albo query ktore pobiera date poczatkowo i koncowa.
-                //2. patrzy czy w tym zakresie dat jest lot ktory jest zaplanowany
+            if((arguments.EndsAt - arguments.StartsAt).TotalMinutes < 60)
+            {
+                MessageBox.Show("Minimalny czas statusu dla pasa startowego wynosi 1h");
+                return false;
+            }
 
             return true;
         }

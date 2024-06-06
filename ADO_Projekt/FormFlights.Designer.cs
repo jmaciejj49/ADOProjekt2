@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFlights));
             this.dataGridViewFlightPlanning = new System.Windows.Forms.DataGridView();
             this.bindingNavigatorFlightPlanning = new System.Windows.Forms.BindingNavigator(this.components);
@@ -55,29 +55,28 @@
             // 
             this.dataGridViewFlightPlanning.AllowUserToAddRows = false;
             this.dataGridViewFlightPlanning.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFlightPlanning.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFlightPlanning.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewFlightPlanning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewFlightPlanning.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewFlightPlanning.Location = new System.Drawing.Point(0, 38);
-            this.dataGridViewFlightPlanning.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewFlightPlanning.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewFlightPlanning.Location = new System.Drawing.Point(0, 30);
             this.dataGridViewFlightPlanning.Name = "dataGridViewFlightPlanning";
             this.dataGridViewFlightPlanning.RowHeadersWidth = 51;
             this.dataGridViewFlightPlanning.RowTemplate.Height = 24;
-            this.dataGridViewFlightPlanning.Size = new System.Drawing.Size(1322, 728);
+            this.dataGridViewFlightPlanning.Size = new System.Drawing.Size(1175, 498);
             this.dataGridViewFlightPlanning.TabIndex = 0;
             this.dataGridViewFlightPlanning.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFlightPlanning_CellClick);
             // 
@@ -107,7 +106,7 @@
             this.bindingNavigatorFlightPlanning.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorFlightPlanning.Name = "bindingNavigatorFlightPlanning";
             this.bindingNavigatorFlightPlanning.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorFlightPlanning.Size = new System.Drawing.Size(1322, 34);
+            this.bindingNavigatorFlightPlanning.Size = new System.Drawing.Size(1175, 31);
             this.bindingNavigatorFlightPlanning.TabIndex = 1;
             this.bindingNavigatorFlightPlanning.Text = "bindingNavigator1";
             // 
@@ -117,13 +116,13 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(34, 29);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorAddNewItem.Text = "Dodaj nowy";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 26);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 28);
             this.bindingNavigatorCountItem.Text = "z {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Suma elementów";
             // 
@@ -133,7 +132,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(34, 26);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorDeleteItem.Text = "Usuń";
             // 
             // bindingNavigatorMoveFirstItem
@@ -142,7 +141,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 26);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMoveFirstItem.Text = "Przenieś pierwszy";
             // 
             // bindingNavigatorMovePreviousItem
@@ -151,7 +150,7 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(34, 26);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMovePreviousItem.Text = "Przenieś poprzedni";
             // 
             // bindingNavigatorSeparator
@@ -165,7 +164,7 @@
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(56, 31);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Bieżąca pozycja";
             // 
@@ -180,7 +179,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(34, 26);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMoveNextItem.Text = "Przenieś następny";
             // 
             // bindingNavigatorMoveLastItem
@@ -189,7 +188,7 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(34, 26);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMoveLastItem.Text = "Przenieś ostatni";
             // 
             // bindingNavigatorSeparator2
@@ -204,21 +203,20 @@
             this.bindingNavigatorSaveButton.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorSaveButton.Image")));
             this.bindingNavigatorSaveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bindingNavigatorSaveButton.Name = "bindingNavigatorSaveButton";
-            this.bindingNavigatorSaveButton.Size = new System.Drawing.Size(66, 29);
+            this.bindingNavigatorSaveButton.Size = new System.Drawing.Size(56, 28);
             this.bindingNavigatorSaveButton.Text = "Zapisz";
             this.bindingNavigatorSaveButton.Click += new System.EventHandler(this.bindingNavigatorSaveButton_Click);
             // 
             // FormFlights
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 765);
+            this.ClientSize = new System.Drawing.Size(1175, 529);
             this.Controls.Add(this.bindingNavigatorFlightPlanning);
             this.Controls.Add(this.dataGridViewFlightPlanning);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormFlights";
-            this.Text = "Choroszcz International Airport | Zarządzanie Lotami";
+            this.Text = "Jazgarzewszczyzna International Airport | Zarządzanie Lotami";
             this.Load += new System.EventHandler(this.FormFlights_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFlightPlanning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorFlightPlanning)).EndInit();
