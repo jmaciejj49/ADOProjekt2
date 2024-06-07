@@ -27,6 +27,8 @@ namespace ADO_Projekt
             ConfigureDataGridView();
             SetStatusLabel();
             dataGridViewRunway.CellFormatting += dataGridViewRunway_CellFormatting;
+            AddCustomDeleteButton();
+            DisableDefaultDelete();
         }
         private void SetStatusLabel()
         {
@@ -140,6 +142,37 @@ namespace ADO_Projekt
                 e.CellStyle.ForeColor = status ? Color.Green : Color.Red;
                 e.Value = status ? "Dostępny" : "Niedostępny";
             }
+        }
+
+        private void CustomDeleteButtonClick(object sender, EventArgs e)
+        {
+            if (dataGridViewRunway.CurrentRow == null || dataGridViewRunway.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Nie wybrano żadnego wiersza do usunięcia lub wiersz jest nowym wierszem.");
+                return;
+            }
+
+            DataRowView currentRowView = dataGridViewRunway.CurrentRow.DataBoundItem as DataRowView;
+
+            if (currentRowView != null && currentRowView.Row.RowState == DataRowState.Detached)
+            {
+                dataGridViewRunway.Rows.RemoveAt(dataGridViewRunway.CurrentRow.Index);
+            }
+            else
+            {
+                MessageBox.Show("Nie można usunąć zapisanych lub załadowanych danych.");
+            }
+        }
+        private void DisableDefaultDelete()
+        {
+            bindingNavigatorDeleteItem.Enabled = false;
+        }
+        private void AddCustomDeleteButton()
+        {
+            ToolStripButton deleteButton = new ToolStripButton();
+            deleteButton.Text = "Usuń";
+            deleteButton.Click += new EventHandler(CustomDeleteButtonClick);
+            bindingNavigatorRunway.Items.Add(deleteButton);
         }
 
     }

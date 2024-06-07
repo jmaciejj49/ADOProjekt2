@@ -3,44 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\formrunwaymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\formrunwaymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\formflights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\formflights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ado_projekt\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\formreports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\formreports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ado_projekt\\flightspopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\flightspopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\dbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\dbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\formflights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\formflights.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ado_projekt\\flightspopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\flightspopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|c:\\users\\puddi\\documents\\github\\ado_projekt\\adoprojekt\\ado_projekt\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{D56C5FCE-5961-41F8-8B6B-783F8AB0887D}|ADO_Projekt\\ADO_Projekt.csproj|solutionrelative:ado_projekt\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,132 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 57,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FormMain.cs",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormMain.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FormMain.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormMain.cs",
-              "RelativeToolTip": "ADO_Projekt\\FormMain.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAgwDIAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T14:30:45.234Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormRunwayManagement.cs [Projekt]",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormRunwayManagement.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FormRunwayManagement.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormRunwayManagement.cs [Projekt]",
-              "RelativeToolTip": "ADO_Projekt\\FormRunwayManagement.cs [Projekt]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T02:06:07.719Z",
-              "EditorCaption": " [Projekt]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FormFlights.cs",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormFlights.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FormFlights.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormFlights.cs",
-              "RelativeToolTip": "ADO_Projekt\\FormFlights.cs",
-              "ViewState": "AQIAAJQAAAAAAAAAAAAwwK4AAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T15:46:59.2Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormFlights.cs [Projekt]",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormFlights.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FormFlights.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormFlights.cs [Projekt]",
-              "RelativeToolTip": "ADO_Projekt\\FormFlights.cs [Projekt]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T15:46:56.192Z",
-              "EditorCaption": " [Projekt]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DBHelper.cs",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\DBHelper.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\DBHelper.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\DBHelper.cs",
-              "RelativeToolTip": "ADO_Projekt\\DBHelper.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAkwGgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T14:52:20.546Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DBService.cs",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\DbService.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\DbService.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\DbService.cs",
-              "RelativeToolTip": "ADO_Projekt\\DbService.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAgwDcAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T14:24:44.901Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormReports.cs [Projekt]",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormReports.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FormReports.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormReports.cs [Projekt]",
-              "RelativeToolTip": "ADO_Projekt\\FormReports.cs [Projekt]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T18:11:49.042Z",
-              "EditorCaption": " [Projekt]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormMain.cs [Projekt]",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormMain.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FormMain.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FormMain.cs [Projekt]",
-              "RelativeToolTip": "ADO_Projekt\\FormMain.cs [Projekt]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T02:07:28.398Z",
-              "EditorCaption": " [Projekt]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FlightsPopup.cs [Projekt]",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FlightsPopup.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FlightsPopup.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FlightsPopup.cs [Projekt]",
-              "RelativeToolTip": "ADO_Projekt\\FlightsPopup.cs [Projekt]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T01:09:09.985Z",
-              "EditorCaption": " [Projekt]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FlightsPopup.cs",
-              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FlightsPopup.cs",
-              "RelativeDocumentMoniker": "ADO_Projekt\\FlightsPopup.cs",
-              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\FlightsPopup.cs",
-              "RelativeToolTip": "ADO_Projekt\\FlightsPopup.cs",
-              "ViewState": "AQIAAEYAAAAAAAAAAAAkwE0AAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T01:09:16.091Z",
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\App.config",
+              "RelativeDocumentMoniker": "ADO_Projekt\\App.config",
+              "ToolTip": "C:\\Users\\puddi\\Documents\\GitHub\\ADO_Projekt\\ADOProjekt\\ADO_Projekt\\App.config",
+              "RelativeToolTip": "ADO_Projekt\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-06-07T01:32:54.671Z",
               "EditorCaption": ""
             }
           ]

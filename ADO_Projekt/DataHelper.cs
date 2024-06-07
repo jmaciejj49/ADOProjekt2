@@ -11,7 +11,7 @@ namespace ADO_Projekt
     public class DataHelper
     {
         DBHelper dbHelper = new DBHelper();
-        public bool ValidateFlightData(DateTime arrival, DateTime departure, int airplaneID) //Metoda sprawdzająca poprawność wybranych dat/godzin odlotu i przylotu
+        public bool ValidateFlightData(DateTime arrival, DateTime departure, int airplaneID) 
         {
             if (arrival >= departure)
             {
@@ -20,12 +20,12 @@ namespace ADO_Projekt
             }
 
             int minimumGroundTime = dbHelper.GetMinimumGroundTime(airplaneID);
-            if ((departure - arrival).TotalMinutes < minimumGroundTime) //Minimalny czas postoju samolotu
+            if ((departure - arrival).TotalMinutes < minimumGroundTime)
             {
                 MessageBox.Show($"Minimalny czas postuju dla tego samolotu wynosi: {minimumGroundTime} minut.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if ((departure - arrival).TotalMinutes > minimumGroundTime * 3) //Maksymalny czas postoju samolotu
+            if ((departure - arrival).TotalMinutes > minimumGroundTime * 3) 
             {
                 MessageBox.Show($"Maksymalny czas postoju dla tego samoloty wynosi: {minimumGroundTime * 3} minut");
                 return false;
